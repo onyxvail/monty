@@ -1,42 +1,38 @@
 #include "monty.h"
 
 /**
- * push - Pushes an integer to the stack
- * @stack: The stack to push the integer to
- * @line_number: The line number of the instruction in the bytecode file
- *
+ * pall - print all members
+ * @stack: double list
+ * @linenumber: line
  */
-void push(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, __attribute__((unused))unsigned int linenumber)
 {
-int value;
-char *argument = strtok(NULL, "\n");
-
-if (argument == NULL)
-{
-fprintf(stderr, "L%d: usage: push integer\n", line_number);
-exit(EXIT_FAILURE);
-}
-
-value = atoi(argument);
-stack_push(stack, value);
-}
-/**
- * pall - Prints all the values on the stack
- * @stack: The stack to print the values from
- * @line_number: The line number of the instruction in the bytecode file
- *
- */
-void pall(stack_t **stack)
-{
-stack_t *top = *stack;
-
-if (top == NULL)
+stack_t *a = *stack;
+if (!*stack)
 {
 return;
 }
-while (top != NULL)
+	
+while (a != NULL)
 {
-printf("%d\n", top->n);
-top = top->next;
+printf("%d\n", a->n);
+a = a->next;
+}
+}
+
+/**
+ * pint - print int in stack
+ * @stack: double list
+ * @linenumber: line
+ */
+void pint(stack_t **stack, __attribute__((unused))unsigned int linenumber)
+{
+if (*stack != NULL)
+printf("%d\n", (*stack)->n);
+else
+{
+dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", monty.line_number);
+free_it_all();
+exit(EXIT_FAILURE);
 }
 }
