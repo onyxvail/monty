@@ -1,15 +1,16 @@
 #include "monty.h"
 
 /**
- * parses_line - parses line into tokens.
- * the tokens are separated by " " and "\n".
- * only the  first 2 tokens will be returned if success
- * @line: buffer from getline
+ * parseline - parsing line into tokens
+ * that are separated by " " and "\n"
+ * only first two tokens will be returned if success
+ * @line: buffer from getline in readfile()
  *
  * Return: null-terminated array of tokens
  * or NULL
  */
-char **parses_line(char *line)
+
+char **parseline(char *line)
 {
 char *token, **tokens;
 unsigned int i;

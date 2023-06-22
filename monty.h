@@ -1,15 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
-#define _POSIX_C_SOURCE 200809L
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <ctype.h>
 extern int error;
 
 /**
@@ -21,7 +17,6 @@ extern int error;
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO Holberton project
  */
-
 typedef struct stack_s
 {
 	int n;
@@ -37,19 +32,19 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
  */
+
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
 int main(int ac, char **av);
-char **parses_line(char *line);
-void frees_list(stack_t **head, FILE *fps, char *line);
-int check_monty(char *tokens, int *mode);
+char **parseline(char *line);
+void free_monty(stack_t **head, FILE *fps, char *line);
+int monty_check(char *token, int *mode);
 void push(stack_t **head, char *arg, int *mode);
 void pall(stack_t **head);
-void push_stack(stack_t **head, stack_t **new);
-void monty_queue(stack_t **head, stack_t **new);
+void stackpush(stack_t **head, stack_t **new);
+void monty_enqueue(stack_t **head, stack_t **new);
 
 #endif /*MONTY_H*/

@@ -1,12 +1,13 @@
 #include "monty.h"
 
 /**
- * push_stack - pushing node to  stack.
- * @head: addressing the head of the linked list
- * @new: address pointer to node
- * Return: nothing
+ * stackpush - pushes the node to the stack
+ * @head: head address of the linked list
+ * @new: addresses the pointer   to new node.
+ * Return: NOTHING
  */
-void push_stack(stack_t **head, stack_t **new)
+
+void stackpush(stack_t **head, stack_t **new)
 {
 if (*head == NULL)
 {
@@ -24,12 +25,13 @@ else
 }
 
 /**
- * monty_queue - pushes the new node to queue
- * @head: addressing the head of the linked list
- * @new: address pointer to node
- * Return: nothing
+ * monty_enqueue - push new node to the queue.
+ * @head: head address of the linked list.
+ * @new: address THE pointer to THE New node
+ * Return: NOTHING.
  */
-void monty_queue(stack_t **head, stack_t **new)
+
+void monty_enqueue(stack_t **head, stack_t **new)
 {
 stack_t *tmp;
 

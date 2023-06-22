@@ -1,13 +1,14 @@
 #include "monty.h"
 
 /**
- * frees_list - it f rees the linked list
- * @head: top of the stack
+ * free_monty - freeing the linked lists
+ * @head: top of  stack
  * @fps: file
  * @line: line
- * Return: void
+ * Return: VOID
  */
-void frees_list(stack_t **head, FILE *fps, char *line)
+
+void free_monty(stack_t **head, FILE *fps, char *line)
 {
 if (*head != NULL)
 {
