@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "monty.h"
 /**
  * push - add node to list

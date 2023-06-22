@@ -1,7 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -61,7 +60,10 @@ void read_monty(void);
 void opcode_monty(stack_t **stack, char *opcode);
 ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream);
 void op_choose(stack_t **stack, char *opcode);
-
+void init_montyStruct(void);
+void free_it_all(void);
+void free_build(stack_t *h);
+bool check_input(char *str);
 
 /* prototype opcode Fns */
 
