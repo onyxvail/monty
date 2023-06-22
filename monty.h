@@ -54,4 +54,34 @@ stack_t *stack;
 } monty_t;
 
 extern monty_t monty;
+
+/* prototypes Fns for monty*/
+void open_monty(int argc, char *filename);
+void read_monty(void);
+void opcode_monty(stack_t **stack, char *opcode);
+ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream);
+void op_choose(stack_t **stack, char *opcode);
+
+
+/* prototype opcode Fns */
+
+void push(char *argument);
+void pop(stack_t **stack, unsigned int linenumber);
+void swap(stack_t **stack, unsigned int linenumber);
+void nop(stack_t **stack, unsigned int linenumber);
+void add(stack_t **stack, unsigned int linenumber);
+void pall(stack_t **stack, unsigned int linenumber);
+void pint(stack_t **stack, unsigned int linenumber);
+void sub(stack_t **stack, unsigned int linenumber);
+void div_op(stack_t **stack, unsigned int linenumber);
+void mul(stack_t **stack, unsigned int linenumber);
+void mod(stack_t **stack, unsigned int linenumber);
+void pchar(stack_t **stack, unsigned int linenumber);
+void pstr(stack_t **stack, unsigned int linenumber);
+void rotl(stack_t **stack, unsigned int linenumber);
+void rotr(stack_t **stack, unsigned int linenumber);
+void stack_op(stack_t **stack, unsigned int linenumber);
+void queue_op(stack_t **stack, unsigned int linenumber);
+void push_queue(char *argument);
+
 #endif /*MONTY_H*/

@@ -1,37 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "monty.h"
+
 /**
- * open_monty - opens a monty
- * and validates  the input
- * @argc: the args for count
- * @filename: the path to monty.
+ * open_monty - open a monty and validate input
+ * @argc: args count
+ * @filename: path to monty
  */
 void open_monty(int argc, char *filename)
 {
 if (argc != 2)
 {
-dprintf(STDERR_FILENO, "USAGE: monty file\n");
+fprintf(stderr, "USAGE: monty file\n");
 exit(EXIT_FAILURE);
 }
 monty.file = fopen(filename, "r");
 if (!monty.file)
 {
-dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+fprintf(stderr, "Error: Can't open file %s\n", filename);
 exit(EXIT_FAILURE);
 }
 }
+
 /**
- * read_monty - Read and execute each line of the input from monty'sfile
+ * read_monty - reads and executes each line of input from monty file
  */
 void read_monty(void)
 {
 size_t len = 0;
 ssize_t read;
 char *opcode, *data;
-while (1)
+
+while ((read = custom_getline(&monty.line, &len, monty.file)) != -1)
 {
-read = getline(&monty.line, &len, monty.file);
-if (read == -1)
-break;
 opcode = strtok(monty.line, " ");
 if (*opcode == '#' || *opcode == '\n')
 {
@@ -42,24 +44,22 @@ else if (strcmp(opcode, "push") == 0)
 {
 data = strtok(NULL, " \n");
 if (monty.is_queue)
-{
 push_queue(data);
-}
 else
 push(data);
 }
 else
-opcode_monty(&monty.stack, opcode);
+op_choose(&monty.stack, opcode);
 monty.line_number++;
 }
 }
+
 /**
- * opcode_monty - finds and call the function
- * that correspond with opcode.
+ * op_choose - find & call the function that corresponds with the opcode
  * @stack: **pointer to stack
  * @opcode: opcode from this line of our monty file
  */
-void opcode_monty(stack_t **stack, char *opcode)
+void op_choose(stack_t **stack, char *opcode)
 {
 int i;
 char *op;
@@ -93,10 +93,10 @@ return;
 }
 if (strcmp(opcode, "push"))
 {
-dprintf(STDERR_FILENO, "L%u: ", monty.line_number);
-dprintf(STDERR_FILENO, "unknown instruction %s\n", opcode);
+fprintf(stderr, "L%u: ", monty.line_number);
+fprintf(stderr, "unknown instruction %s\n", opcode);
 }
 else
-dprintf(STDERR_FILENO, "L%u: usage: push integer\n", monty.line_number);
+fprintf(stderr, "L%u: usage: push integer\n", monty.line_number);
 exit(EXIT_FAILURE);
 }
