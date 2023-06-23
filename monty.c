@@ -1,41 +1,24 @@
-#define _POSIX_C_SOURCE 200809L
-#include<stdio.h>
 #include "monty.h"
+global_var var_global;
 
 /**
- * main - main function OF MONTY PROG
- *@ac: argument count
- *@av: argument vect
- *Return: integer
+ * main - main fn for monty program
+ * @ac: integer number of arguments
+ * @av: opcode file
+ * Return: 0
  */
-
 int main(int ac, char **av)
 {
-FILE *fps;
-char *line = NULL;
-size_t size = 0;
-int read;
+stack_t *stack;
 
+stack = NULL;
 if (ac != 2)
 {
-dprintf(STDERR_FILENO, "USAGE: monty file\n");
-return (1);
+fprintf(stderr, "USAGE: monty file\n");
+exit(EXIT_FAILURE);
 }
 
-fps = fopen(av[1], "r");
-if (fps == NULL)
-{
-dprintf(STDERR_FILENO, "Error: cannot open file\n");
-return (1);
-}
-
-while ((read = getline(&line, &size, fps)) != -1)
-{
-
-}
-
-fclose(fps);
-free(line);
-
+read_monty_file(av[1], &stack);
+free_dlistint(stack);
 return (0);
 }

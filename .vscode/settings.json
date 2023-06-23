@@ -3,6 +3,7 @@
         "stdlib.h": "c",
         "monty.h": "c",
         "stdio.h": "c",
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "cstdlib": "c"
     }
 }
