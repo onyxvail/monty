@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _sub - sub top of stack 
+ * _sub - sub top of stack
  * & second top stack
  * @stack: pointer of monty's lists
  * @line_number: number of occurence of line opcode
@@ -94,7 +94,7 @@ _pop(stack, line_number);
 }
 }
 /**
- * _div - div top of the stack 
+ * _div - div top of the stack
  * & second top stack
  * @stack: pointer of monty's lists
  * @line_number: number of occurence of line opcode
